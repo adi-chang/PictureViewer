@@ -18,6 +18,17 @@ namespace PictureViewer
          InitializeComponent();
       }
 
+      private void Form1_Load(object sender, EventArgs e)
+      {
+         this.cboMode.Items.Add(PictureBoxSizeMode.Normal);
+         this.cboMode.Items.Add(PictureBoxSizeMode.StretchImage);
+         this.cboMode.Items.Add(PictureBoxSizeMode.AutoSize);
+         this.cboMode.Items.Add(PictureBoxSizeMode.CenterImage);
+         this.cboMode.Items.Add(PictureBoxSizeMode.Zoom);
+         this.cboMode.SelectedItem = this.pictureBox.SizeMode;
+      }
+
+
       int _index = 0;
       List<string> _listKoleksiImage = null;
 
@@ -101,6 +112,9 @@ namespace PictureViewer
          return base.ProcessCmdKey(ref msg, keyData);
       }
 
-
+      private void cboMode_SelectedIndexChanged(object sender, EventArgs e)
+      {
+         this.pictureBox.SizeMode = (PictureBoxSizeMode)this.cboMode.SelectedItem;
+      }
    }
 }
